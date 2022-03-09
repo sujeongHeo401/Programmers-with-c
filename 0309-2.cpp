@@ -1,4 +1,5 @@
-
+﻿
+//https://www.hackerrank.com/challenges/k-candy-store/problem
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -88,4 +89,42 @@ string rtrim(const string& str) {
     return s;
 }
 
-//https://www.hackerrank.com/challenges/k-candy-store/problem
+
+/// 정답 코드 
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+const long long MOD = (long long)1e9;
+long long dp[1001][1001];
+
+int main() {
+    dp[0][0] = 1;
+    for (int i = 1; i < 1001; ++i) {
+        dp[i][0] = 1;
+        dp[i][i] = 1;
+        for (int j = 1; j < i; ++j) {
+            dp[i][j] = (dp[i - 1][j] + dp[i - 1][j - 1]) % MOD;
+        }
+    }
+
+    int T;
+    cin >> T;
+    for (int tc = 0; tc < T; ++tc) {
+        int n, k;
+        cin >> n >> k;
+
+        long long res = 0;
+
+        for (int i = 1; i <= min(n, k); ++i) {
+            res = (res + dp[n][i] * dp[k - 1][i - 1]) % MOD;
+        }
+
+        cout << res << endl;
+    }
+
+    return 0;
+}
