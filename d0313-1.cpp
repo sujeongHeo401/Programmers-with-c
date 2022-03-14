@@ -29,6 +29,11 @@ long halloweenParty(int k) {
 
 }
 
+
+long long int vertical = k / 2;
+long long int horizontal = k - vertical;
+return vertical * horizontal; 
+
 int main()
 {
     ofstream fout(getenv("OUTPUT_PATH"));
