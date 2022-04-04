@@ -4,11 +4,12 @@ using namespace std;
 
 string gridSearch(vector<string> G, vector<string> P) {
     string buff;
+    int lenp = P[0].size();
     for (int i = 0; i < G.size(); i++) {
         for (int j = 0; j < G[i].size(); j++) {
             bool trigger = 1;
             for (int k = 0; k < P.size(); k++) {
-                buff = G[i + k].substr(j, P[0].size());
+                buff = G[i + k].substr(j, lenp);
                 if (buff != P[k]) {
                     trigger = false;
                     break;
