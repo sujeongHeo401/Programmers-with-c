@@ -1,0 +1,13 @@
+int maximumToys(vector<int> prices, int k) {
+    int i, sum = 0;
+    sort(prices.begin(), prices.end());
+    while(prices[i] < k)
+    {
+        sum = sum + prices[i];
+        if(sum > k) break;
+        i++;
+    }
+    return i;
+}
+
+/////////////https://www.hackerrank.com/challenges/mark-and-toys/problem
